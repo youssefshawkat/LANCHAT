@@ -1,5 +1,3 @@
-package client;
-
 
 
 
@@ -180,8 +178,7 @@ public class ChatUI extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) throws Exception {
-           
-       
+
 
         UIManager.setLookAndFeel(new FlatArcDarkContrastIJTheme());
 
@@ -254,7 +251,8 @@ public class ChatUI extends javax.swing.JFrame {
 
             }
         }
-   
+        SimpleAudioPlayer.filePath = "sound.wav";
+
 
 
         String name =  (String) JOptionPane.showInputDialog(null, "Please Enter Your Name: ", "CHAT", JOptionPane.INFORMATION_MESSAGE, null, null, "");

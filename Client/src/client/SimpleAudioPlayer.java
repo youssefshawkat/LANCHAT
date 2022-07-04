@@ -1,10 +1,7 @@
-package client;
-
 // Java program to play an Audio
 // file using Clip Object
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Scanner;
 
 import javax.sound.sampled.AudioInputStream;
@@ -19,18 +16,19 @@ public class SimpleAudioPlayer {
 
     Clip clip;
 
-    URL SoundPath;
+    // current status of clip
+    String status;
+
+    AudioInputStream audioInputStream;
+    static String filePath;
 
     // constructor to initialize streams and clip
     public SimpleAudioPlayer()
             throws UnsupportedAudioFileException,
             IOException, LineUnavailableException {
-        try{
-        SoundPath = getClass().getResource("/sound.wav");
-        
         // create AudioInputStream object
-          AudioInputStream audioInputStream=
-                AudioSystem.getAudioInputStream(SoundPath);
+        audioInputStream =
+                AudioSystem.getAudioInputStream(new File(filePath).getAbsoluteFile());
 
         // create clip reference
         clip = AudioSystem.getClip();
@@ -38,10 +36,6 @@ public class SimpleAudioPlayer {
         // open audioInputStream to the clip
         clip.open(audioInputStream);
 
-        } catch(Exception e){
-            
-            e.printStackTrace();
-        }
 
     }
 
@@ -54,7 +48,7 @@ public class SimpleAudioPlayer {
         //start the clip
         clip.start();
 
-       
+        status = "play";
 
     }
 
